@@ -13,7 +13,7 @@ class Inflation:
         self.medie_inflatie = np.mean(self.rata_inflatie)
         self.deviatia_standard = np.std(self.rata_inflatie)
         print(f'Media inflatiei in Romania (2000 -> 2023): {round(self.medie_inflatie, 2)}%')
-        print(f'Deviatia standard a mediei (2000 -> 2023): ±{round(self.deviatia_standard, 2)}%')
+        print(f'Deviatia standard a mediei (2000 -> 2023): {round(self.deviatia_standard, 2)}%')
 
         # generez o matrice cu perioada_experiment coloane si numar_simulari linii
         self.simulare_inflatie = np.random.normal(self.medie_inflatie, self.deviatia_standard, size=(numar_simulari, PERIOADA_EXPERIMENT))
@@ -66,7 +66,7 @@ class Inflation:
                  density=True)
         plt.axvline(medie_simulari, color='red', linestyle='dashed', linewidth=1.5,
                     label=f'Medie inflatie: {medie_simulari:.2f}%')
-        plt.axvline(lower_bound, color='orange', linestyle='dashed', linewidth=1.2, label=f'Derivatia (σ): {round(std_simulari, 2)}%')
+        plt.axvline(lower_bound, color='orange', linestyle='dashed', linewidth=1.2, label=f'Deviația (σ): {round(std_simulari, 2)}%')
         plt.axvline(upper_bound, color='orange', linestyle='dashed', linewidth=1.2)
         plt.title('Distribuția simulărilor inflației', fontsize=14)
         plt.xlabel('Rata inflației simulate (%)', fontsize=10)
@@ -80,6 +80,6 @@ class Inflation:
 ani = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
 rata_inflatie = [45.7, 34.5, 22.5, 15.3, 11.9, 9.0, 6.6, 4.8, 7.9, 5.6, 6.1, 5.8, 3.3, 4.0, 1.1, -0.6, -1.5, 1.3, 4.6, 3.8, 2.6, 5.1, 13.8, 10.4]
 
-inflatie = Inflation(ani, rata_inflatie, 100, 4611)
+inflatie = Inflation(ani, rata_inflatie, 100)
 inflatie.compute()
 inflatie.plot()
