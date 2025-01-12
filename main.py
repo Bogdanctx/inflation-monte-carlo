@@ -28,8 +28,8 @@ class Inflation:
         medie_viitor = np.mean(suma_viitoare) # calculez media inflatiei peste cei 5 ani.
         deviatia_standard_viitor = np.std(suma_viitoare) # calculez deviatia standard a inflatiei din urmatorii 5 ani
 
-        numar_necesar_simulari = 4 * (1 - nivel_de_incredere) * (marja_eroare ** 2)
-        numar_necesar_simulari = 1 / numar_necesar_simulari
+        z = 1.65  # din z-table
+        numar_necesar_simulari = (z * deviatia_standard_viitor / (marja_eroare * medie_viitor)) ** 2
 
         print(f'Peste {PERIOADA_EXPERIMENT} ani, {self.suma_economisita} lei vor insemna {round(medie_viitor, 2)} lei (± {round(deviatia_standard_viitor, 2)} lei)')
         print(f'Pentru o eroare de ±{round(marja_eroare * 100, 2)}% cu nivelul de încredere {round(nivel_de_incredere * 100, 2)}%, sunt necesare cel putin {round(numar_necesar_simulari)} simulari')
