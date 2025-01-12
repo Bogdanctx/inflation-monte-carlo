@@ -28,8 +28,10 @@ class Inflation:
         medie_viitor = np.mean(suma_viitoare) # calculez media inflatiei peste cei 5 ani.
         deviatia_standard_viitor = np.std(suma_viitoare) # calculez deviatia standard a inflatiei din urmatorii 5 ani
 
-        z = 1.65  # din z-table
-        numar_necesar_simulari = (z * deviatia_standard_viitor / (marja_eroare * medie_viitor)) ** 2
+        # chernoff-hoeffding
+        # vezi cursul 11 "Q4: Pot imbunatati estimarile din Q2 si Q3?"
+        numar_necesar_simulari = 2 * (marja_eroare ** 2)
+        numar_necesar_simulari = np.log(2 / (1 - nivel_de_incredere)) / numar_necesar_simulari # ln(2 / (1-alpha)) / (2 * epsilon^2)
 
         print(f'Peste {PERIOADA_EXPERIMENT} ani, {self.suma_economisita} lei vor insemna {round(medie_viitor, 2)} lei (± {round(deviatia_standard_viitor, 2)} lei)')
         print(f'Pentru o eroare de ±{round(marja_eroare * 100, 2)}% cu nivelul de încredere {round(nivel_de_incredere * 100, 2)}%, sunt necesare cel putin {round(numar_necesar_simulari)} simulari')
@@ -78,6 +80,6 @@ class Inflation:
 ani = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
 rata_inflatie = [45.7, 34.5, 22.5, 15.3, 11.9, 9.0, 6.6, 4.8, 7.9, 5.6, 6.1, 5.8, 3.3, 4.0, 1.1, -0.6, -1.5, 1.3, 4.6, 3.8, 2.6, 5.1, 13.8, 10.4]
 
-inflatie = Inflation(ani, rata_inflatie, 100)
+inflatie = Inflation(ani, rata_inflatie, 100, 4611)
 inflatie.compute()
 inflatie.plot()
