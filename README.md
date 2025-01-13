@@ -24,7 +24,7 @@ Where:
 2. **Inflation Rate Simulation**:
 Inflation rates are modeled using a normal (Gaussian) distribution:
 ```math
-\text{simulare inflatie} = max(0,N(\mu,\sigma))
+\text{simulare\_inflatie} = max(0,N(\mu,\sigma))
 ```
 Where:
 - $\mu$: Historical mean of inflation rates.
@@ -35,7 +35,7 @@ To avoid unrealistic values (e.g., extreme negative inflation), the simulation e
 3. **Convergence of Estimates**:
 According to the Central Limit Theorem, the mean of the simulated values converges to the expected real value as the number of simulations increases. The margin of error is calculated as:
 ```math
-\text{Error }\alpha\frac{\sigma}{\sqrt{N}}
+\text{Error =}\alpha\frac{\sigma}{\sqrt{N}}
 ```
 Where:
 - $N$: Number of simulations
@@ -43,7 +43,7 @@ Where:
 This mathematical foundation ensures that the model produces robust, statistically valid results while allowing flexibility for customization.
 
 ## Methodology
-1. **Historical Data**: Uses inflation rates from 1972-2023 to calculate mean and standard deviation.
+1. **Historical Data**: Uses inflation rates from 2000-2023 to calculate mean and standard deviation.
 2. **Monte Carlo Simulations**:
    - Generates 100,000 simulations based on a normal distribution of inflation rates.
    - Adjusts savings value iteratively for 5 years using simulated inflation rates.
