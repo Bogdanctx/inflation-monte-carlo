@@ -80,6 +80,6 @@ class Inflation:
 ani = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
 rata_inflatie = [45.7, 34.5, 22.5, 15.3, 11.9, 9.0, 6.6, 4.8, 7.9, 5.6, 6.1, 5.8, 3.3, 4.0, 1.1, -0.6, -1.5, 1.3, 4.6, 3.8, 2.6, 5.1, 13.8, 10.4]
 
-inflatie = Inflation(ani, rata_inflatie, 100)
+inflatie = Inflation(ani, rata_inflatie, 100, 4611)
 inflatie.compute()
 inflatie.plot()
