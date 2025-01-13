@@ -4,7 +4,7 @@ This repository provides a Monte Carlo simulation model that estimates the real 
 
 ## Features
 - Simulates the impact of inflation on savings over a 5-year horizon.
-- Utilizes historical inflation data (1972-2023) for realistic modeling.
+- Utilizes historical inflation data (2000-2023) for realistic modeling.
 - Includes visualization tools for result analysis (distribution plots and historical inflation trends).
 - Provides an easily adjustable codebase for custom scenarios.
 
